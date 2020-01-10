@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProducerConsumer.Core
 {
-    public interface ILogTask
+    public interface IObserver
     {
-        void SendTextLine(object source, string line);
+        void OnNewTextLine(object source, string line);
     }
 }

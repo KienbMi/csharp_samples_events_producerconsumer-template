@@ -5,7 +5,7 @@ namespace ProducerConsumer.Core
 {
     public class Producer
     {
-        private ILogTask _logTask;
+        private IObserver _logTask;
         Queue<Task> _queue;
         FastClock _fastClock;
         int _minutesToNextProduction;
@@ -14,7 +14,7 @@ namespace ProducerConsumer.Core
         Random _random;
         int _taskNumber;
 
-        public Producer(int min, int max, FastClock fastClock, ILogTask logTask, Queue<Task> queue)
+        public Producer(int min, int max, FastClock fastClock, IObserver logTask, Queue<Task> queue)
         {
             _logTask = logTask;
             _fastClock = fastClock;
@@ -35,7 +35,7 @@ namespace ProducerConsumer.Core
             else
             {
                 Task newTask = new Task(time, _taskNumber++);
-                newTask.LogTask += _logTask.SendTextLine;
+                newTask.LogTask += _logTask.OnNewTextLine;
                 _queue.Enqueue(newTask);
                 newTask.Start(_queue.Count);
 

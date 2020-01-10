@@ -10,7 +10,7 @@ namespace ProducerConsumer.Wpf
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ILogTask
+    public partial class MainWindow : IObserver
     {
         private Producer _producer;
         private Consumer _consumer;
@@ -68,7 +68,7 @@ namespace ProducerConsumer.Wpf
             _fastClock.IsRunning = CheckBoxIsRunning.IsChecked == true;
         }
 
-        void ILogTask.SendTextLine(object source, string line)
+        public void OnNewTextLine(object source, string line)
         {
             AddLineToTextBox(line);
         }
