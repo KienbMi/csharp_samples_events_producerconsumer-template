@@ -9,8 +9,7 @@
         mc:Ignorable="d"
         WindowStyle="ThreeDBorderWindow" BorderThickness="2" 
         BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
-        Title="Producer - Consumer" Height="500" Width="638.675"
-        Initialized="MetroWindow_Initialized">
+        Title="Producer - Consumer" Height="500" Width="638.675">
     <Grid Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

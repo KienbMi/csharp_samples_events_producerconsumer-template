@@ -10,21 +10,15 @@ namespace ProducerConsumer.Wpf
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ILogTask
+    public partial class MainWindow
     {
         private Producer _producer;
         private Consumer _consumer;
         private Queue<Task> _queue;
-        private FastClock _fastClock;
 
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void MetroWindow_Initialized(object source, EventArgs e)
-        {
-            _fastClock = FastClock.Instance;
         }
 
 
@@ -37,15 +31,14 @@ namespace ProducerConsumer.Wpf
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
             TextBlockLog.Text = "";
-            _queue = new Queue<Task>();
+            _queue=new Queue<Task>();
             int min = Convert.ToInt32(TextBoxProducerMinimum.Text);
             int max = Convert.ToInt32(TextBoxProducerMaximum.Text);
-            _producer = new Producer(min, max, _fastClock, this, _queue);
+            //_producer = new Producer(min, max, LogTask, _queue);
             min = Convert.ToInt32(TextBoxConsumerMinimum.Text);
             max = Convert.ToInt32(TextBoxConsumerMaximum.Text);
-            _consumer = new Consumer(min, max, _fastClock, _queue);
+            //_consumer = new Consumer(min, max, _queue);
             CheckBoxIsRunning.IsChecked = true;
-            _fastClock.IsRunning = true;
         }
 
         /// <summary>
@@ -64,12 +57,6 @@ namespace ProducerConsumer.Wpf
 
         private void CheckBoxIsRunning_Click(object sender, RoutedEventArgs e)
         {
-            _fastClock.IsRunning = CheckBoxIsRunning.IsChecked == true;
-        }
-
-        void ILogTask.AddLineToTextBox(object source, string line)
-        {
-            AddLineToTextBox(line);
         }
     }
 }
