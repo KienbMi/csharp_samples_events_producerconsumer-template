@@ -35,7 +35,7 @@ namespace ProducerConsumer.Core
             else
             {
                 Task newTask = new Task(time, _taskNumber++);
-                newTask.LogTask += _logTask.AddLineToTextBox;
+                newTask.LogTask += _logTask.SendTextLine;
                 _queue.Enqueue(newTask);
                 newTask.Start(_queue.Count);
 

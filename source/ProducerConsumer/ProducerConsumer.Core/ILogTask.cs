@@ -8,6 +8,6 @@ namespace ProducerConsumer.Core
 {
     public interface ILogTask
     {
-        void AddLineToTextBox(object source, string line);
+        void SendTextLine(object source, string line);
     }
 }

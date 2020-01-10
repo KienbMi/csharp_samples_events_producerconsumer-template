@@ -38,6 +38,7 @@ namespace ProducerConsumer.Wpf
         {
             TextBlockLog.Text = "";
             _queue = new Queue<Task>();
+            
             int min = Convert.ToInt32(TextBoxProducerMinimum.Text);
             int max = Convert.ToInt32(TextBoxProducerMaximum.Text);
             _producer = new Producer(min, max, _fastClock, this, _queue);
@@ -67,7 +68,7 @@ namespace ProducerConsumer.Wpf
             _fastClock.IsRunning = CheckBoxIsRunning.IsChecked == true;
         }
 
-        void ILogTask.AddLineToTextBox(object source, string line)
+        void ILogTask.SendTextLine(object source, string line)
         {
             AddLineToTextBox(line);
         }
