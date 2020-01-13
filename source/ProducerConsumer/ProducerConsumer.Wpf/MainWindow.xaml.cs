@@ -38,7 +38,9 @@ namespace ProducerConsumer.Wpf
         {
             TextBlockLog.Text = "";
             _queue = new Queue<Task>();
-            
+            _producer?.DetachFromFastClock();
+            _consumer?.DetachFromFastClock();
+
             int min = Convert.ToInt32(TextBoxProducerMinimum.Text);
             int max = Convert.ToInt32(TextBoxProducerMaximum.Text);
             _producer = new Producer(min, max, _fastClock, this, _queue);

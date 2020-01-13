@@ -42,5 +42,10 @@ namespace ProducerConsumer.Core
                 _minutesToNextProduction = _random.Next(_minDuration, _maxDuration + 1);
             }
         }
+
+        public void DetachFromFastClock()
+        {
+            _fastClock.OneMinuteIsOver -= Instance_OneMinuteIsOver;
+        }
     }
 }
